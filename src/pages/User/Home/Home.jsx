@@ -13,9 +13,9 @@ import menu_5 from "../../../assets/images/menu_5.png";
 import menu_6 from "../../../assets/images/menu_6.png";
 import menu_7 from "../../../assets/images/menu_7.png";
 import menu_8 from "../../../assets/images/menu_8.png";
-import slider1 from "../../../assets/images/banner-01.jpg";
-import slider2 from "../../../assets/images/banner-02.jpg";
-import slider3 from "../../../assets/images/banner-03.jpg";
+import slider1 from "../../../assets/images/1.png";
+import slider2 from "../../../assets/images/2.png";
+import slider3 from "../../../assets/images/3.png";
 import SliderComponent from "../SliderComponent/SliderComponent";
 
 
