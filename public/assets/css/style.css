@@ -3799,21 +3799,21 @@ button.btn-close.qty_close {
   -webkit-animation-name: fadeOutDown;
   animation-name: fadeOutDown;
 }
-> .hero-contact:nth-child(1) {
+.hero-contact:nth-child(1) {
   webkit-animation-name: fadeInUp;
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
   -webkit-animation-delay: 3s;
   animation-delay: 3s;
 }
-> .hero-contact:nth-child(2) {
+.hero-contact:nth-child(2) {
   webkit-animation-name: fadeInUp;
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
   -webkit-animation-delay: 2s;
   animation-delay: 2s;
 }
-> .hero-contact:nth-child(3) {
+.hero-contact:nth-child(3) {
   webkit-animation-name: fadeInUp;
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
