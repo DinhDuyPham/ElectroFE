@@ -1,0 +1,60 @@
+.chart {
+  background-color: #f6f7fd;
+
+  &-box {
+    margin-top: 48px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #ffffff;
+
+    canvas {
+      height: 560px;
+    }
+  }
+
+  .btn-export {
+    background: #f3ba00;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    color: #ffffff;
+    border: none;
+    margin-bottom: 20px;
+  }
+
+  &-time {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 45px;
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      span {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        margin-right: 10px;
+      }
+
+      input,
+      select {
+        width: 180px;
+      }
+
+      .form-group {
+        display: flex;
+        align-items: center;
+      }
+
+      .btn-revenue {
+        background: #1ac073;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        color: #ffffff;
+        border: none;
+      }
+    }
+  }
+}

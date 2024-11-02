@@ -1,0 +1,5 @@
+node_modules
+/build
+
+# Ignore files for NPM
+package-lock.json

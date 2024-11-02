@@ -1,0 +1,76 @@
+.aside {
+  & + .aside {
+    margin-top: 30px;
+  }
+
+  & > .aside-title {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    margin: 15px 0px 30px;
+  }
+
+  .checkbox-filter {
+    & > div + div {
+      margin-top: 10px;
+    }
+  }
+
+  .input-radio label,
+  .checkbox-filter .input-checkbox label {
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .input-radio label small,
+  .checkbox-filter .input-checkbox label small {
+    color: #8d99ae;
+  }
+
+  #price-slider {
+    margin-bottom: 15px;
+
+    .noUi-target {
+      background-color: #fff;
+      box-shadow: none;
+      border: 1px solid #e4e7ed;
+      border-radius: 0px;
+    }
+
+    .noUi-connect {
+      background-color: #d10024;
+    }
+
+    .noUi-horizontal {
+      height: 6px;
+
+      .noUi-handle {
+        width: 12px;
+        height: 12px;
+        left: 18px;
+        top: -4px;
+        border: none;
+        background: #d10024;
+        box-shadow: none;
+        border-radius: 50%;
+
+        &::after,
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .price-filter .input-number {
+    display: inline-block;
+    width: calc(50% - 5px);
+    margin: 0;
+  }
+}
+
+.primary-btn.btn-filter {
+  padding: 6px 30px;
+  margin-top: 12px;
+}

@@ -1,0 +1,131 @@
+.product {
+  .add-to-cart {
+    padding: 15px;
+    background: #ffe8d6;
+    text-align: center;
+    z-index: 20;
+
+    .add-to-cart-btn {
+      position: relative;
+      border: 2px solid transparent;
+      height: 40px;
+      padding: 0 30px;
+      background-color: #fff7f5;
+      color: #000000;
+      text-transform: uppercase;
+      font-weight: 700;
+      border-radius: 40px;
+      transition: 0.2s all;
+
+      & > svg {
+        position: absolute;
+        left: 15px;
+        top: 20%;
+        line-height: 38px;
+        color: #bbbbbb;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      &:hover {
+        background-color: #000000;
+        color: #d67a8a;
+        border-color: #d67a8a;
+        padding: 0px 30px 0px 50px;
+
+        & > svg {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  .product-img {
+    position: relative;
+
+    & > img {
+      width: 100%;
+    }
+
+    .product-label {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+
+      & > span {
+        border: 2px solid;
+        padding: 2px 10px;
+        font-size: 12px;
+
+        &.sale {
+          background-color: #fff;
+          border-color: #d10024;
+          color: #d10024;
+        }
+
+        &.new {
+          background-color: #d10024;
+          border-color: #d10024;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .product-body {
+    position: relative;
+    padding: 15px;
+    background-color: #fff;
+    text-align: center;
+    z-index: 20;
+
+    .product-category {
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #8d99ae;
+    }
+
+    .product-name {
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    a {
+      font-weight: 700;
+      color: #2b2d42;
+      transition: 0.2s color;
+
+      &:hover,
+      &:focus {
+        color: #d10024;
+      }
+    }
+
+    .product-price {
+      color: #d10024;
+      font-size: 18px;
+
+      .product-old-price {
+        font-size: 70%;
+        font-weight: 400;
+        color: #8d99ae;
+      }
+    }
+
+    .product-btns > button {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      background: transparent;
+      border: none;
+      transition: 0.2s all;
+
+      &:hover {
+        background-color: #e4e7ed;
+        color: #d10024;
+        border-radius: 50%;
+      }
+    }
+  }
+}

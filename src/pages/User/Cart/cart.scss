@@ -1,0 +1,44 @@
+.cart {
+  height: 100vh;
+
+  & > table {
+    & > thead {
+      tr > th {
+        padding: 16px;
+      }  
+    }
+
+    & > tbody {
+      tr > td {
+        padding: 16px;
+
+        & > img {
+          max-width: 120px;
+        }
+      }
+    }
+  }
+
+  .input-number {
+    margin: 0;
+    max-width: 80px;
+  }
+
+  .cart__info {
+    margin-top: 36px;
+
+    &-total {
+      label {
+        font-weight: 500;
+      }
+
+      span {
+        font-weight: normal;
+      }
+      .price {
+        color: #d10024;
+        font-weight: 500;
+      }
+    }
+  }
+}

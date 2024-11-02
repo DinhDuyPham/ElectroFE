@@ -1,0 +1,22 @@
+#footer {
+  background: #15161d;
+  border-top: 3px solid #d67a8a;
+  color: #b9babc;
+  // flex: 1;
+
+  #bottom-footer {
+    background: #ffe8d6;
+    padding: 30px 0;
+    height: fit-content;
+  }
+
+  .copyright {
+    display: block;
+    font-size: 12px;
+
+    a {
+      color: #2b2d42;
+      font-weight: 500;
+    }
+  }
+}
