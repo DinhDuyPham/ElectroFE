@@ -109,7 +109,7 @@ function OrderDetail() {
           <Row>
             {orderItems &&
               orderItems.map((item, index) => {
-                const { product_name, product_image, qty } = item;
+                const { product_name, product_image, qty, price } = item;
 
                 return (
                   <Col xs={6} className="" key={index}>
@@ -124,6 +124,9 @@ function OrderDetail() {
                         </label>
                         <label>
                           Số lượng: <span>{qty}</span>
+                        </label>
+                        <label>
+                          Giá sản phẩm: <span>{convertCurrency(price)}</span>
                         </label>
                       </div>
                     </div>
