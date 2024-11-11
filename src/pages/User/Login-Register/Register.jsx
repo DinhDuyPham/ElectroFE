@@ -12,11 +12,11 @@ function Register() {
     password: "",
     confirm_password: "",
     phone: "",
-    gender: "",
+    gender: "male", // Giá trị mặc định là "male"
     role: "user",
   });
 
-  const [showPassword, setShowPassword] = useState([]);
+  const [showPassword, setShowPassword] = useState([false, false]);
 
   const handleTogglePassword = (index) => {
     setShowPassword((prevPasswords) => {
@@ -26,7 +26,7 @@ function Register() {
     });
   };
 
-  const handleSubmitResgister = async (event) => {
+  const handleSubmitRegister = async (event) => {
     event.preventDefault();
 
     if (
@@ -34,7 +34,7 @@ function Register() {
       formData.confirm_password.length >= 6
     ) {
       const response = await fetch("/api/auth/register", {
-        method: "post",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -61,10 +61,11 @@ function Register() {
               <h2 className="content-title mb-4">Đăng ký tài khoản</h2>
 
               <div className="content-validation px-4">
-                <form action="post" onSubmit={handleSubmitResgister}>
+                <form onSubmit={handleSubmitRegister}>
+                  {/* First Name */}
                   <div className="mb-3">
                     <label className="form-label">
-                      Nhập tên <span>*</span>{" "}
+                      Nhập tên <span>*</span>
                     </label>
                     <input
                       type="text"
@@ -80,9 +81,11 @@ function Register() {
                       required
                     />
                   </div>
+
+                  {/* Last Name */}
                   <div className="mb-3">
                     <label className="form-label">
-                      Nhập họ <span>*</span>{" "}
+                      Nhập họ <span>*</span>
                     </label>
                     <input
                       type="text"
@@ -98,9 +101,11 @@ function Register() {
                       required
                     />
                   </div>
+
+                  {/* Email */}
                   <div className="mb-3">
                     <label className="form-label">
-                      Địa chỉ Email <span>*</span>{" "}
+                      Địa chỉ Email <span>*</span>
                     </label>
                     <input
                       type="email"
@@ -113,6 +118,8 @@ function Register() {
                       required
                     />
                   </div>
+
+                  {/* Password */}
                   <div className="mb-3">
                     <label className="form-label">
                       Mật khẩu <span>*</span>
@@ -138,6 +145,8 @@ function Register() {
                       )}
                     </div>
                   </div>
+
+                  {/* Confirm Password */}
                   <div className="mb-3">
                     <label className="form-label">
                       Nhập lại mật khẩu <span>*</span>
@@ -163,6 +172,8 @@ function Register() {
                       )}
                     </div>
                   </div>
+
+                  {/* Phone */}
                   <div className="mb-3">
                     <label className="form-label">
                       Nhập số điện thoại <span>*</span>
@@ -178,6 +189,8 @@ function Register() {
                       required
                     />
                   </div>
+
+                  {/* Gender */}
                   <div className="mb-3">
                     <label className="form-label">
                       Chọn giới tính <span>*</span>
@@ -189,6 +202,7 @@ function Register() {
                           type="radio"
                           name="gender"
                           value="male"
+                          checked={formData.gender === "male"}
                           onChange={(event) =>
                             setFormData({
                               ...formData,
@@ -196,10 +210,7 @@ function Register() {
                             })
                           }
                         />
-                        <label
-                          className="form-check-label"
-                          htmlFor="inlineRadio1"
-                        >
+                        <label className="form-check-label" htmlFor="inlineRadio1">
                           Nam
                         </label>
                       </div>
@@ -209,6 +220,7 @@ function Register() {
                           type="radio"
                           name="gender"
                           value="female"
+                          checked={formData.gender === "female"}
                           onChange={(event) =>
                             setFormData({
                               ...formData,
@@ -216,24 +228,23 @@ function Register() {
                             })
                           }
                         />
-                        <label
-                          className="form-check-label"
-                          htmlFor="inlineRadio2"
-                        >
+                        <label className="form-check-label" htmlFor="inlineRadio2">
                           Nữ
                         </label>
                       </div>
                     </div>
                   </div>
 
+                  {/* Submit Button */}
                   <div className="my-4">
-                    <button className="btn btn-submit w-100 px-4">
+                    <button className="btn btn-submit w-100 px-4" type="submit">
                       Đăng ký
                     </button>
                   </div>
                 </form>
               </div>
 
+              {/* Link to Login */}
               <div className="text-center">
                 <p>
                   Bạn đã có tài khoản?
