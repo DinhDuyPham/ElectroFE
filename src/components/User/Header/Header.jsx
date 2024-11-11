@@ -96,7 +96,7 @@ function Header(props) {
                         <Link to="/store" className="mx-3"> Shop</Link>
                      
                         <Link to="/Blog" className="mx-3"> Blog</Link>
-                        <Link to="/c" className="mx-3"> ContactUs</Link>
+                        <Link to="/ContactUS" className="mx-3"> ContactUs</Link>
                         </div>
                       </div>
                     <div className="d-flex align-items-center">

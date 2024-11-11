@@ -15,6 +15,7 @@ import Order from "./Order/Order";
 import Blog from "./Blog/Blog";
 import BlogDetails from "./Blog/Blogdetails";
 import Profile from "./Profile/Profile";
+import ContactUs from "./ContactUs/ContactUs";
 function User() {
   let location = useLocation();
   const [isUIHidden, setIsUIHidden] = useState(false);
@@ -49,7 +50,7 @@ function User() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blogdetails" element={<BlogDetails />} />
         <Route path="/profile" element={<Profile/>} />
-
+        <Route path="/contactus" element={<ContactUs/>} />
       </Routes>
       {isUIHidden && <Footer />}
     </>
