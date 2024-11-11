@@ -3,9 +3,9 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
-
+import GoogleImg from "../../../assets/images/googleImg.png";
 import cartApi from "../../../api/cartApi";
-
+import Button from "@mui/material/Button";
 function Login() {
   const [accessToken, setAccessToken] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -137,6 +137,13 @@ function Login() {
                     Đăng ký
                   </Link>
                 </p>
+                <Button
+                className="loginWithGoogle mt-2"
+                variant="outlined"
+                // onClick={signInWithGoogle}
+              >
+                <img src={GoogleImg} /> Sign In with Google
+              </Button>
               </div>
             </div>
           </div>

@@ -14,7 +14,7 @@ import Cart from "./Cart/Cart";
 import Order from "./Order/Order";
 import Blog from "./Blog/Blog";
 import BlogDetails from "./Blog/Blogdetails";
-
+import Profile from "./Profile/Profile";
 function User() {
   let location = useLocation();
   const [isUIHidden, setIsUIHidden] = useState(false);
@@ -34,7 +34,6 @@ function User() {
     <>
       <Header isUIHidden={isUIHidden} />
       <ToastContainer />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/store" element={<Store />}>
@@ -49,6 +48,8 @@ function User() {
         <Route path="/order" element={<Order />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blogdetails" element={<BlogDetails />} />
+        <Route path="/profile" element={<Profile/>} />
+
       </Routes>
       {isUIHidden && <Footer />}
     </>
