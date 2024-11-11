@@ -55,7 +55,7 @@ function Aside(props) {
   return (
     <form className="aside-form">
       <div className="aside">
-        <h3 className="aside-title">Danh mụcs</h3>
+        <h3 className="aside-title">Danh mục</h3>
         <div className="checkbox-filter">
           {categoryList &&
             categoryList.map((item) => {
