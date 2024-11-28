@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import GoogleImg from "../../../assets/images/googleImg.png";
+import FbImg from "../../../assets/images/Facebook-logo.png";
 import cartApi from "../../../api/cartApi";
 import Button from "@mui/material/Button";
 function Login() {
@@ -143,6 +144,13 @@ function Login() {
                 // onClick={signInWithGoogle}
               >
                 <img src={GoogleImg} /> Sign In with Google
+              </Button>
+              <Button
+                className="loginWithGoogle mt-2"
+                variant="outlined"
+                // onClick={signInWithGoogle}
+              >
+                <img src={FbImg} /> Sign In with Google
               </Button>
               </div>
             </div>

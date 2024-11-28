@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaSearch } from "react-icons/fa";
 import { MdOutlineAccountCircle } from "react-icons/md";
 
 import logo from "../../../assets/images/logo.png";
@@ -12,11 +12,11 @@ import { setCart, setCartItems } from "../../../actions";
 import { convertCurrency } from "../../../helpers/convertCurrency";
 
 function Header(props) {
-  // eslint-disable-next-line react/prop-types
   const { isUIHidden } = props;
 
   const { cart, cartItems, dispatch } = useGlobalContext();
   const [isShowCart, setIsShowCart] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [keyword, setKeyword] = useState("");
 
   const cookiesUser = Cookies.get("user");
@@ -85,20 +85,23 @@ function Header(props) {
 
             {isUIHidden && (
               <>
-              
-              
-
                 <div className="col-md-7 clearfix">
                   <div className="header-ctn d-flex align-items-center">
-                  <div className="d-flex align-items-center">
-                    <div className="d-flex align-items-center mr-1" >
-                        <Link to="/" className="mx-1"> Home</Link>
-                        <Link to="/store" className="mx-3"> Shop</Link>
-                     
-                        <Link to="/Blog" className="mx-3"> Blog</Link>
-                        <Link to="/ContactUS" className="mx-3"> ContactUs</Link>
-                        </div>
-                      </div>
+                    <div className="d-flex align-items-center mr-1">
+                      <Link to="/" className="mx-1">
+                        Home
+                      </Link>
+                      <Link to="/store" className="mx-3">
+                        Shop
+                      </Link>
+                      <Link to="/Blog" className="mx-3">
+                        Blog
+                      </Link>
+                      <Link to="/ContactUS" className="mx-3">
+                        ContactUs
+                      </Link>
+                    </div>
+
                     <div className="d-flex align-items-center">
                       {user ? (
                         <Link to="#" className="header-ctn-user">
@@ -107,19 +110,14 @@ function Header(props) {
                           </span>
 
                           <div className="dropdown-user d-flex flex-column">
-                            {
-                              <Link
-                                to="/profile"
-                                className="dropdown-user-link"
-                              >
-                                Thông tin tài khoản
-                              </Link>
-                            }
+                            <Link to="/profile" className="dropdown-user-link">
+                              Thông tin tài khoản
+                            </Link>
                             <Link to="/order" className="dropdown-user-link">
                               Đơn hàng của tôi
                             </Link>
                             <Link
-                              className="dropdown-user-link"  
+                              className="dropdown-user-link"
                               onClick={handleClickLogOut}
                             >
                               Đăng xuất
@@ -133,7 +131,6 @@ function Header(props) {
                           <Link to="/register">Đăng ký </Link>
                         </>
                       )}
-                     
                     </div>
 
                     {user && (
@@ -209,40 +206,38 @@ function Header(props) {
                         </div>
                       </div>
                     )}
-
-                    <div className="menu-toggle">
-                      <a href="#">
-                        <i className="fa fa-bars"></i>
-                        <span>Menu</span>
-                      </a>
-                    </div>
-
-                    
                   </div>
                 </div>
-                
-                <div className="col-md-3">
-                  <div className="header-search">
-                    <form>
-                      {/* <select className="input-select">
-                        <option value="0">All Categories</option>
-                        <option value="1">Category 01</option>
-                        <option value="1">Category 02</option>
-                      </select> */}
-                      <input
-                        className="input"
-                        placeholder="Nhập sản phẩm"
-                        onChange={(e) => setKeyword(e.target.value)}
-                      />
-                      <button
-                        className="search-btn"
-                        onClick={handleClickSearch}
-                      >
-                        Tìm kiếm
-                      </button>
-                    </form>
-                  </div>
-                </div>
+
+                {/* Thanh tìm kiếm */}
+<div className="col-md-3">
+  <div className="search-container">
+    <div
+      className="search-icon"
+      onClick={() => setIsSearchOpen((prev) => !prev)}
+    >
+      <FaSearch />
+    </div>
+    
+  </div>
+</div>
+{isSearchOpen && (
+      <div className="header-search">
+        <form>
+          <input
+            className="input"
+            placeholder="Nhập sản phẩm"
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+          <button
+            className="search-btn"
+            onClick={handleClickSearch}
+          >
+            Tìm kiếm
+          </button>
+        </form>
+      </div>
+    )}
               </>
             )}
           </div>
