@@ -3,55 +3,44 @@ import { Button, Form, FloatingLabel } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
-import productApi from "../../../api/productApi";
-import categoryApi from "../../../api/categoryApi";
+import blogApi from "../../../api/blogApi";
 
 function BlogEdit() {
-  const [productItem, setProductItem] = useState(null);
-  const [categoryList, setCategoryList] = useState([]);
+  const [blogItem, setblogItem] = useState(null);
+
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (id) {
-      const fetchProductItem = async () => {
-        const data = await productApi.getProductById(id);
+      const fetchblogItem = async () => {
+        const data = await blogApi.getBlogById(id);
 
-        if (data) setProductItem(data);
+        if (data) setblogItem(data);
       };
 
-      fetchProductItem();
+      fetchblogItem();
     }
   }, [id]);
 
-  const fetchListCate = async () => {
-    const data = await categoryApi.getListCategory();
+ 
 
-    if (data?.length > 0) setCategoryList(data);
-  };
-
-  useEffect(() => {
-    fetchListCate();
-  }, []);
-
-  const handleUpdateProduct = async (event) => {
+  const handleUpdateBlog = async (event) => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("name", productItem.name);
-    formData.append("category_id", productItem.category_id);
-    formData.append("image", productItem.image);
-    formData.append("detail", productItem.detail);
-    formData.append("price", productItem.price);
-    formData.append("qty", productItem.quantity);
+    formData.append("title", blogItem.title);
+    formData.append("image", blogItem.image);
+    formData.append("author", blogItem.author);
+    formData.append("content", blogItem.content);
 
     try {
-      const response = await fetch(`/api/product/${id}`, {
+      const response = await fetch(`/api/blog/${id}`, {
         method: "put",
         body: formData,
       });
 
-      if (response.ok) navigate("/admin/product");
+      if (response.ok) navigate("/admin/blog");
     } catch (error) {
       toast.error("Thêm sản phẩm thất bại");
       console.error("Submission failed:", error);
@@ -64,70 +53,35 @@ function BlogEdit() {
       <h3 className="title-admin">Cập nhập sản phẩm</h3>
 
       <div className="product-container background-radius">
-        {productItem && (
-          <Form className="product-form" onSubmit={handleUpdateProduct}>
+        {blogItem && (
+          <Form className="product-form" onSubmit={handleUpdateBlog}>
             <Form.Group className="mb-4">
-              <Form.Label>Tên danh mục</Form.Label>
+              <Form.Label>Tiêu đề</Form.Label>
               <Form.Control
                 type="text"
                 name="name"
-                value={productItem.name}
+                value={blogItem.title}
                 onChange={(event) =>
-                  setProductItem({ ...productItem, name: event.target.value })
+                  setblogItem({ ...blogItem, title: event.target.value })
                 }
               />
             </Form.Group>
 
-            <Form.Group className="position-relative mb-4">
-              <Form.Label>Danh mục</Form.Label>
-              <Form.Select
-                aria-label="Default select example"
-                onChange={(event) =>
-                  setProductItem({
-                    ...productItem,
-                    category_id: event.target.value,
-                  })
-                }
-                value={productItem.category_id}
-              >
-                <option>Chọn danh mục</option>
-                {categoryList &&
-                  categoryList.map((cateItem, index) => {
-                    const { category } = cateItem;
-                    const { id, name } = category;
-
-                    return (
-                      <option key={index} value={id}>
-                        {name}
-                      </option>
-                    );
-                  })}
-              </Form.Select>
-            </Form.Group>
+         
 
             <Form.Group className="mb-4">
-              <Form.Label>Giá sản phẩm</Form.Label>
+              <Form.Label>Tác giả</Form.Label>
               <Form.Control
                 onChange={(event) =>
-                  setProductItem({ ...productItem, price: event.target.value })
+                  setblogItem({ ...blogItem, author: event.target.value })
                 }
-                type="number"
+                type="text"
                 name="price"
-                value={productItem.price}
+                value={blogItem.author}
               />
             </Form.Group>
 
-            <Form.Group className="mb-4">
-              <Form.Label>Số lượng</Form.Label>
-              <Form.Control
-                onChange={(event) =>
-                  setProductItem({ ...productItem, quantity: event.target.value })
-                }
-                type="number"
-                name="quantity"
-                value={productItem.qty}
-              />
-            </Form.Group>
+      
 
             <Form.Group className="position-relative mb-4">
               <Form.Label>Hình ảnh</Form.Label>
@@ -135,8 +89,8 @@ function BlogEdit() {
                 type="file"
                 name="image"
                 onChange={(event) =>
-                  setProductItem({
-                    ...productItem,
+                  setblogItem({
+                    ...blogItem,
                     image: event.target.files[0],
                   })
                 }
@@ -150,11 +104,11 @@ function BlogEdit() {
                   as="textarea"
                   placeholder="Leave a comment here"
                   style={{ height: "200px" }}
-                  value={productItem.detail}
+                  value={blogItem.content}
                   onChange={(event) =>
-                    setProductItem({
-                      ...productItem,
-                      detail: event.target.value,
+                    setblogItem({
+                      ...blogItem,
+                      content: event.target.value,
                     })
                   }
                 />

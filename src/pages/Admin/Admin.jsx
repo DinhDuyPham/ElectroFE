@@ -16,6 +16,8 @@ import Order from "./Order/Order";
 import OrderDetail from "./Order/OrderDetail";
 import Revenue from "./Revenue/Revenue";
 import Blog from "../Admin/Blog/Blog";
+import BlogAdd from "./Blog/BlogAdd";
+import BlogEdit from "./Blog/BlogEdit";
 
 function Admin() {
   const navigate = useNavigate();
@@ -58,6 +60,8 @@ function Admin() {
             <Route path="/admin/order/:orderId" element={<OrderDetail/>}/>
             <Route path="/admin/revenue" element={<Revenue />} />
             <Route path="/admin/blog" element={<Blog/>} />
+            <Route path="/admin/blog/add" element={<BlogAdd/>} />
+            <Route path="/admin/blog/update/:id" element={<BlogEdit/>} />
           </Routes>
         </div>
       </div>
