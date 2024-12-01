@@ -1,197 +1,65 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import './blog.scss';
+import blogApi from "../../../api/blogApi"; // Đảm bảo bạn đã export đúng blogApi
+
 const Blog = () => {
+  const [blogs, setBlogs] = useState([]);
+
+  // Lấy danh sách các blog khi component được mount
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const fetchedBlogs = await blogApi.getListBlog();
+      setBlogs(fetchedBlogs);
+    };
+
+    fetchBlogs();
+  }, []);
+
   return (
     <>
       {/* Blog Section */}
-<section className="section-blog padding-tb-50">
-  <div className="container">
-    <div className="row mb-minus-24">
-      {/* Blog Card 1 */}
-      <div
-        className="col-lg-4 col-md-6 col-12 mb-24"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        data-aos-delay="200"
-      >
-        <div className="bb-blog-card">
-          <div className="blog-image">
-            <img src="assets/img/blog/1.jpg" alt="blog-1" />
+      <section className="section-blog padding-tb-50">
+        <div className="container">
+          <div className="row mb-minus-24">
+            {blogs.length > 0 ? (
+              blogs.map((blog, index) => (
+                <div
+                  key={blog._id}
+                  className="col-lg-4 col-md-6 col-12 mb-24"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-delay={index * 200}
+                >
+                  <div className="bb-blog-card">
+                    <div className="blog-image">
+             
+                      <img
+                        src={`http://localhost:8080/static/images/${blog.image || 'default-image.jpg'}`}
+                        alt={blog.title}  
+                      />
+                    </div>
+                    <div className="blog-contact">
+                      <h5>
+                        <a href={`blog-details/${blog._id}`}>{blog.title}</a>
+                      </h5>
+                      <p>{blog.content}</p>
+                      <div className="blog-btn">
+                        <a href={`blog-details/${blog._id}`} className="bb-btn-2">Read More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+              ))
+            ) : (
+              <p>No blogs available.</p>
+            )}
           </div>
-          <div className="blog-contact">
-            <h5>
-              <a href="javascript:void(0)">Marketing Guide: 5 Steps to Success.</a>
-            </h5>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta ab illum maiores
-              error neque amet rem quod consequuntur? Iste, rerum.
-            </p>
-            <div className="blog-btn">
-              <a href="blog-detail-left-sidebar.html" className="bb-btn-2">Read More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Blog Card 2 */}
-      <div
-        className="col-lg-4 col-md-6 col-12 mb-24"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        data-aos-delay="400"
-      >
-        <div className="bb-blog-card">
-          <div className="blog-image">
-            <img src="assets/img/blog/2.jpg" alt="blog-2" />
-          </div>
-          <div className="blog-contact">
-            <h5>
-              <a href="javascript:void(0)">Best way to solve business deal issue.</a>
-            </h5>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta ab illum maiores
-              error neque amet rem quod consequuntur? Iste, rerum.
-            </p>
-            <div className="blog-btn">
-              <a href="blog-detail-left-sidebar.html" className="bb-btn-2">Read More</a>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Blog Card 3 */}
-      <div
-        className="col-lg-4 col-md-6 col-12 mb-24"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        data-aos-delay="600"
-      >
-        <div className="bb-blog-card">
-          <div className="blog-image">
-            <img src="assets/img/blog/3.jpg" alt="blog-3" />
-          </div>
-          <div className="blog-contact">
-            <h5>
-              <a href="javascript:void(0)">31 customer stats know in 2019.</a>
-            </h5>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta ab illum maiores
-              error neque amet rem quod consequuntur? Iste, rerum.
-            </p>
-            <div className="blog-btn">
-              <a href="blog-detail-left-sidebar.html" className="bb-btn-2">Read More</a>
-            </div>
-          </div>
+       
         </div>
-      </div>
-
-      {/* Blog Card 4 */}
-      <div
-        className="col-lg-4 col-md-6 col-12 mb-24"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        data-aos-delay="200"
-      >
-        <div className="bb-blog-card">
-          <div className="blog-image">
-            <img src="assets/img/blog/4.jpg" alt="blog-4" />
-          </div>
-          <div className="blog-contact">
-            <h5>
-              <a href="javascript:void(0)">Business ideas to grow your business.</a>
-            </h5>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta ab illum maiores
-              error neque amet rem quod consequuntur? Iste, rerum.
-            </p>
-            <div className="blog-btn">
-              <a href="blog-detail-left-sidebar.html" className="bb-btn-2">Read More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Blog Card 5 */}
-      <div
-        className="col-lg-4 col-md-6 col-12 mb-24"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        data-aos-delay="400"
-      >
-        <div className="bb-blog-card">
-          <div className="blog-image">
-            <img src="assets/img/blog/5.jpg" alt="blog-5" />
-          </div>
-          <div className="blog-contact">
-            <h5>
-              <a href="javascript:void(0)">Marketing Guide: 5 Steps to Success.</a>
-            </h5>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta ab illum maiores
-              error neque amet rem quod consequuntur? Iste, rerum.
-            </p>
-            <div className="blog-btn">
-              <a href="blog-detail-left-sidebar.html" className="bb-btn-2">Read More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Blog Card 6 */}
-      <div
-        className="col-lg-4 col-md-6 col-12 mb-24"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        data-aos-delay="600"
-      >
-        <div className="bb-blog-card">
-          <div className="blog-image">
-            <img src="assets/img/blog/6.jpg" alt="blog-6" />
-          </div>
-          <div className="blog-contact">
-            <h5>
-              <a href="javascript:void(0)">31 customer stats know in 2019.</a>
-            </h5>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta ab illum maiores
-              error neque amet rem quod consequuntur? Iste, rerum.
-            </p>
-            <div className="blog-btn">
-              <a href="blog-detail-left-sidebar.html" className="bb-btn-2">Read More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Pagination */}
-      <div className="col-12">
-        <div className="bb-pro-pagination">
-          <p>Showing 1-12 of 21 item(s)</p>
-          <ul>
-            <li className="active">
-              <a href="javascript:void(0)">1</a>
-            </li>
-            <li>
-              <a href="javascript:void(0)">2</a>
-            </li>
-            <li>
-              <a href="javascript:void(0)">3</a>
-            </li>
-            <li>
-              <a href="javascript:void(0)">4</a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" className="next">Next <i className="ri-arrow-right-s-line"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+      </section>
     </>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;
